@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华东师范大学 | 保险与精算系师资概览</title>
+    <style>
+        :root {
+            --primary-color: #a41f35; /* ECNU Red */
+            --secondary-color: #2c3e50;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --text-light: #666;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        /* Header Area */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #8a1a2d 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Controls Area */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            padding-left: 40px;
+            border: 2px solid #eee;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background: #f1f1f1;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Grid Layout */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        /* Card Design */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-top: 4px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .card-header {
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            background: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .info h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin-bottom: 4px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-prof { background-color: #e3f2fd; color: #1976d2; }
+        .badge-assoc { background-color: #f3e5f5; color: #7b1fa2; }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .detail-row {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            align-items: flex-start;
+        }
+
+        .detail-icon {
+            width: 20px;
+            margin-right: 10px;
+            opacity: 0.7;
+            padding-top: 2px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .empty-state {
+            width: 100%;
+            text-align: center;
+            padding: 50px;
+            color: #999;
+            grid-column: 1 / -1;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .controls { flex-direction: column; align-items: stretch; }
+            .filters { justify-content: center; width: 100%; }
+            .search-box { min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>保险与精算系</h1>
+    <p>华东师范大学 统计学院 | Department of Insurance and Actuarial Science</p>
+</header>
+
+<div class="container">
+    <div class="controls">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="搜索教师姓名、研究方向...">
+        </div>
+        <div class="filters" id="filterContainer">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="教授">教授</button>
+            <button class="filter-btn" data-filter="副教授">副教授</button>
+        </div>
+    </div>
+
+    <div class="faculty-grid" id="grid">
+        <div class="empty-state" id="emptyState">
+            未找到匹配的教师信息
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 ECNU Statistics School Data Visualization</p>
+    </footer>
+</div>
+
+<script>
+    // Data Source extracted from the target website
+    const facultyData = [
+        { name: "毕俊娜", title: "教授", interests: ["保险精算", "金融数学", "随机优化"], email: "jnbi@sfs.ecnu.edu.cn", office: "理科大楼A1312b" },
+        { name: "陈律", title: "副教授", interests: ["保险精算", "随机控制", "金融计量"], email: "lchen@fem.ecnu.edu.cn", office: "理科大楼A1517" },
+        { name: "范堃", title: "教授", interests: ["保险精算", "数理金融"], email: "kfan@finance.ecnu.edu.cn", office: "理科大楼A1706b" },
+        { name: "贺思辉", title: "副教授", interests: ["金融风险管理", "精算风险理论", "统计综合评价", "利息理论"], email: "shhe@stat.ecnu.edu.cn", office: "理科大楼A1712a" },
+        { name: "李丹萍", title: "教授", interests: ["保险精算", "金融工程", "金融数学", "应用统计"], email: "dpli@fem.ecnu.edu.cn", office: "理科大楼A1717" },
+        { name: "钱林义", title: "教授", interests: ["保险精算", "金融数学"], email: "lyqian@stat.ecnu.edu.cn", office: "理科大楼A1708b" },
+        { name: "仇春涓", title: "教授", interests: ["健康保险", "保险精算"], email: "cjqiu@stat.ecnu.edu.cn", office: "理科大楼A1706c" },
+        { name: "汪荣明", title: "教授", interests: ["保险精算", "风险管理", "数理金融"], email: "rmwang@stat.ecnu.edu.cn", office: "理科大楼A1505" },
+        { name: "危佳钦", title: "教授", interests: ["精算学", "金融数学"], email: "jqwei@stat.ecnu.edu.cn", office: "理科大楼A1512" },
+        { name: "叶明华", title: "教授", interests: ["农业保险", "健康风险管理", "保险与资本市场对接"], email: "mhye@stat.ecnu.edu.cn", office: "理科大楼A1713" },
+        { name: "占梦雅", title: "副教授", interests: ["资本管理", "保险精算"], email: "myzhan@stat.ecnu.edu.cn", office: "理科大楼A1711" },
+        { name: "张楠", title: "副教授", interests: ["保险精算", "风险管理", "金融数学"], email: "nzhang@sfs.ecnu.edu.cn", office: "理科大楼A1709" }
+    ];
+
+    const grid = document.getElementById('grid');
+    const searchInput = document.getElementById('searchInput');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const emptyState = document.getElementById('emptyState');
+
+    // Helper: Generate color from name string to keep it consistent but varied
+    function stringToColor(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+        return '#' + "00000".substring(0, 6 - c.length) + c;
+    }
+
+    // Helper: Create HTML for a card
+    function createCard(teacher) {
+        const initial = teacher.name.charAt(0);
+        const color = stringToColor(teacher.name + "ecnu"); 
+        // Using a fixed set of nice muted colors if random is too chaotic, but let's try dynamic first
+        // Let's override with a specific palette for better UI
+        const colors = ['#E57373', '#F06292', '#BA68C8', '#9575CD', '#7986CB', '#64B5F6', '#4FC3F7', '#4DB6AC', '#81C784', '#FFD54F', '#FF8A65'];
+        const safeColor = colors[teacher.name.length % colors.length];
+
+        const titleClass = teacher.title === '教授' ? 'badge-prof' : 'badge-assoc';
+        
+        const tagsHtml = teacher.interests.map(interest => `<span class="tag">${interest}</span>`).join('');
+
+        return `
+            <div class="card">
+                <div class="card-header">
+                    <div class="avatar" style="background-color: ${safeColor}">${initial}</div>
+                    <div class="info">
+                        <h3>${teacher.name}</h3>
+                        <span class="badge ${titleClass}">${teacher.title}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="detail-row">
+                        <span class="detail-icon">📧</span>
+                        <a href="mailto:${teacher.email}" style="color:var(--primary-color); text-decoration:none;">${teacher.email}</a>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-icon">🏢</span>
+                        <span>${teacher.office}</span>
+                    </div>
+                    <div class="tags">
+                        ${tagsHtml}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Render Function
+    function render(data) {
+        // Clear grid but keep empty state div
+        const cards = grid.querySelectorAll('.card');
+        cards.forEach(card => card.remove());
+
+        if (data.length === 0) {
+            emptyState.style.display = 'block';
+        } else {
+            emptyState.style.display = 'none';
+            data.forEach(teacher => {
+                grid.insertAdjacentHTML('beforeend', createCard(teacher));
+            });
+        }
+    }
+
+    // Filter & Search Logic
+    let currentFilter = 'all';
+    let currentSearch = '';
+
+    function filterData() {
+        const filtered = facultyData.filter(item => {
+            // 1. Check Title Filter
+            const matchesFilter = currentFilter === 'all' || item.title === currentFilter;
+            
+            // 2. Check Search Text
+            const searchLower = currentSearch.toLowerCase();
+            const matchesSearch = item.name.includes(searchLower) || 
+                                  item.interests.some(i => i.toLowerCase().includes(searchLower)) ||
+                                  item.email.includes(searchLower);
+
+            return matchesFilter && matchesSearch;
+        });
+        render(filtered);
+    }
+
+    // Event Listeners
+    searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value.trim();
+        filterData();
+    });
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add to clicked
+            btn.classList.add('active');
+            // Update state
+            currentFilter = btn.dataset.filter;
+            filterData();
+        });
+    });
+
+    // Initial Render
+    render(facultyData);
+
+</script>
+
+</body>
+</html>
