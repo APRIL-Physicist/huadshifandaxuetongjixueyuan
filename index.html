@@ -3,419 +3,699 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华东师范大学 | 保险与精算系师资概览</title>
+    <title>赫尔思健康险 | 守护中国家庭每一刻</title>
     <style>
         :root {
-            --primary-color: #a41f35; /* ECNU Red */
-            --secondary-color: #2c3e50;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #333;
-            --text-light: #666;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --radius: 12px;
+            /* 石榴红渐变体系 - Pomegranate Red */
+            --primary-color: #D92E2E;
+            --primary-gradient: linear-gradient(135deg, #FF6B6B 0%, #D92E2E 50%, #A61B1B 100%);
+            --secondary-bg: #F5F5F7; /* Apple 风格浅灰背景 */
+            --card-bg: #FFFFFF;
+            --text-main: #1D1D1F;
+            --text-secondary: #86868B;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding-bottom: 50px;
+            background-color: var(--secondary-bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Header Area */
+        a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+        a:hover { opacity: 0.7; }
+        ul { list-style: none; }
+
+        /* --- Header (Glassmorphism) --- */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #8a1a2d 100%);
-            color: white;
-            padding: 3rem 1rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background: var(--glass-bg);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        /* Controls Area */
-        .container {
+        .nav-container {
+            width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-            background: white;
-            padding: 20px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            padding: 0 20px;
         }
 
-        .search-box {
-            flex: 1;
-            min-width: 300px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 20px;
-            padding-left: 40px;
-            border: 2px solid #eee;
-            border-radius: 30px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            outline: none;
-        }
-
-        .search-box input:focus {
-            border-color: var(--primary-color);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-        }
-
-        .filters {
-            display: flex;
-            gap: 10px;
-        }
-
-        .filter-btn {
-            background: #f1f1f1;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
+        .logo {
+            font-size: 20px;
             font-weight: 600;
-            color: var(--text-light);
-            transition: all 0.3s;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary-color);
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .nav-links li:hover { color: var(--text-main); cursor: pointer; }
+
+        .auth-btn {
+            background: #1D1D1F;
             color: white;
+            padding: 6px 16px;
+            border-radius: 99px;
+            font-size: 12px;
+            transition: transform 0.2s;
         }
+        .auth-btn:hover { transform: scale(1.05); opacity: 1; }
 
-        /* Grid Layout */
-        .faculty-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        /* Card Design */
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* --- Hero Section (Modified: Red Gradient Background) --- */
+        .hero {
+            margin-top: 60px;
+            height: 500px; /*稍微调低高度让视觉更紧凑*/
+            background: var(--primary-gradient); /* 修改为石榴色渐变 */
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             position: relative;
-            border-top: 4px solid transparent;
+            overflow: hidden;
+            color: #fff; /* 文字改为白色 */
         }
 
-        .card:hover {
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff; /* 确保标题为白色 */
+            background: none;
+            -webkit-text-fill-color: initial;
+            padding-bottom: 0;
+        }
+
+        .hero p {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.9); /* 半透明白色 */
+            font-weight: 400;
+            max-width: 700px;
+        }
+
+        .hero-stats {
+            margin-top: 40px;
+            display: flex;
+            gap: 60px;
+        }
+
+        .stat-item h3 { font-size: 32px; color: #fff; }
+        .stat-item span { font-size: 14px; color: rgba(255, 255, 255, 0.8); }
+
+        /* --- Core Product (Flagship) --- */
+        .section-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .flagship-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .flagship-card:hover { transform: translateY(-5px); }
+
+        .flagship-content {
+            padding: 60px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #FFE5E5;
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .flagship-title { font-size: 40px; font-weight: 700; margin-bottom: 10px; }
+        .flagship-desc { font-size: 18px; color: var(--text-secondary); margin-bottom: 30px; }
+        
+        .features { margin-bottom: 30px; }
+        .feature-item { font-size: 15px; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; }
+        .feature-item::before { content: "✓"; color: var(--primary-color); margin-right: 8px; font-weight: bold; }
+
+        .price-area {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            margin-bottom: 30px;
+        }
+        .price-symbol { font-size: 20px; color: var(--primary-color); }
+        .price-num { font-size: 48px; font-weight: 700; color: var(--primary-color); }
+        .price-unit { color: var(--text-secondary); }
+
+        .cta-btn {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 99px;
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            width: fit-content;
+            box-shadow: 0 4px 15px rgba(224, 60, 49, 0.4);
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            box-shadow: 0 8px 25px rgba(224, 60, 49, 0.6);
+            transform: scale(1.02);
+        }
+
+        .flagship-image {
+            flex: 1;
+            /* Update: 赫护一生医疗险 New Image */
+            background: url('https://test.fukit.cn/autoupload/f/k7AhIRkkxuRrgNLY-f3MptiO_OyvX7mIgxFBfDMDErs/20251230/F9dL/1200X900/%E5%9B%BE%E7%89%87/%E5%85%A8%E5%AE%B6.jpg/webp') no-repeat center center;
+            background-size: cover;
+            min-height: 400px;
+        }
+
+        /* --- Product Grid --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-top: 4px solid var(--primary-color);
+            box-shadow: var(--shadow-md);
         }
 
-        .card-header {
+        .card-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
             padding: 25px;
             display: flex;
-            align-items: center;
-            gap: 20px;
-            border-bottom: 1px solid #f0f0f0;
+            flex-direction: column;
+            flex: 1;
         }
 
-        .avatar {
-            width: 70px;
-            height: 70px;
-            background: #eee;
+        .card-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .card-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; flex: 1; }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .card-price { font-size: 20px; font-weight: 600; color: var(--primary-color); }
+        .card-link { font-size: 14px; color: #0071e3; font-weight: 500; }
+
+        /* --- Services Section --- */
+        .services-section {
+            background: #fff;
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #FFE5E5;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
-            color: white;
-            flex-shrink: 0;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: var(--primary-color);
         }
 
-        .info h3 {
-            font-size: 1.4rem;
-            color: var(--secondary-color);
-            margin-bottom: 4px;
-        }
+        .service-title { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+        .service-desc { font-size: 14px; color: var(--text-secondary); }
 
-        .badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .badge-prof { background-color: #e3f2fd; color: #1976d2; }
-        .badge-assoc { background-color: #f3e5f5; color: #7b1fa2; }
-
-        .card-body {
-            padding: 25px;
-            flex-grow: 1;
-        }
-
-        .detail-row {
-            display: flex;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            color: var(--text-light);
-            align-items: flex-start;
-        }
-
-        .detail-icon {
-            width: 20px;
-            margin-right: 10px;
-            opacity: 0.7;
-            padding-top: 2px;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .tag {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            color: #555;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            transition: all 0.2s;
-        }
-
-        .tag:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .empty-state {
-            width: 100%;
-            text-align: center;
-            padding: 50px;
-            color: #999;
-            grid-column: 1 / -1;
-            display: none;
-        }
-
-        /* Footer */
+        /* --- Footer --- */
         footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #999;
-            font-size: 0.9rem;
+            background: #F5F5F7;
+            padding: 60px 0 20px;
+            border-top: 1px solid #e5e5e5;
+            font-size: 12px;
+            color: var(--text-secondary);
         }
 
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            .controls { flex-direction: column; align-items: stretch; }
-            .filters { justify-content: center; width: 100%; }
-            .search-box { min-width: auto; }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
+
+        .footer-col h4 { color: var(--text-main); font-size: 14px; margin-bottom: 15px; }
+        .footer-col ul li { margin-bottom: 10px; }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 20px 20px 0;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+        }
+
+        /* --- Modal (Apple Style Popup) --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-container {
+            background: #fff;
+            width: 600px;
+            max-width: 90%;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .modal-active { display: flex; opacity: 1; }
+        .modal-active .modal-container { transform: scale(1); }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f0f0f0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .modal-header { margin-bottom: 30px; border-bottom: 1px solid #f0f0f0; padding-bottom: 20px; }
+        .modal-title { font-size: 24px; font-weight: 700; margin-bottom: 5px; }
+        .modal-subtitle { font-size: 14px; color: var(--text-secondary); }
+
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d2d2d7;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus { border-color: var(--primary-color); }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .agreement-box {
+            margin-bottom: 20px; 
+            font-size: 12px; 
+            color: #86868b;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .agreement-box input {
+            margin-top: 3px;
+        }
+
+        .link-highlight {
+            color: #0071e3;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
 
-<header>
-    <h1>保险与精算系</h1>
-    <p>华东师范大学 统计学院 | Department of Insurance and Actuarial Science</p>
-</header>
-
-<div class="container">
-    <div class="controls">
-        <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" placeholder="搜索教师姓名、研究方向...">
+    <header>
+        <div class="nav-container">
+            <div class="logo">赫尔思健康险</div>
+            <ul class="nav-links">
+                <li>首页</li>
+                <li>保险商城</li>
+                <li>医疗服务</li>
+                <li>公开信息披露</li>
+                <li>关于我们</li>
+            </ul>
+            <a href="#" class="auth-btn">登录 / 注册</a>
         </div>
-        <div class="filters" id="filterContainer">
-            <button class="filter-btn active" data-filter="all">全部</button>
-            <button class="filter-btn" data-filter="教授">教授</button>
-            <button class="filter-btn" data-filter="副教授">副教授</button>
+    </header>
+
+    <section class="hero">
+        <h1>守护中国家庭每一刻</h1>
+        <p>让健康保障更简单、更贴心</p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <h3>500万+</h3>
+                <span>服务家庭</span>
+            </div>
+            <div class="stat-item">
+                <h3>25亿+</h3>
+                <span>累计保障金额</span>
+            </div>
+            <div class="stat-item">
+                <h3>24h</h3>
+                <span>极速理赔</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-container">
+        <h2 class="section-title">核心旗舰・全家首选</h2>
+        <div class="flagship-card">
+            <div class="flagship-content">
+                <span class="tag">上线首月销量冠军</span>
+                <div class="flagship-title">赫护一生医疗险</div>
+                <div class="flagship-desc">旗舰版 | 0免赔 | 100% 报销</div>
+                <div class="features">
+                    <div class="feature-item">覆盖 19 种创新特药</div>
+                    <div class="feature-item">提供特需医疗服务</div>
+                    <div class="feature-item">异地就医报销</div>
+                </div>
+                <div class="price-area">
+                    <span class="price-symbol">¥</span>
+                    <span class="price-num">35</span>
+                    <span class="price-unit">/ 年起</span>
+                </div>
+                <button class="cta-btn" onclick="openModal()">立即投保</button>
+            </div>
+            <div class="flagship-image"></div>
         </div>
     </div>
 
-    <div class="faculty-grid" id="grid">
-        <div class="empty-state" id="emptyState">
-            未找到匹配的教师信息
+    <div class="section-container">
+        <h2 class="section-title">为全家定制的保障</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://test.fukit.cn/autoupload/f/k7AhIRkkxuRrgNLY-f3MptiO_OyvX7mIgxFBfDMDErs/20251230/MmbK/1200X900/%E5%9B%BE%E7%89%87/%E9%92%B1.jpg/webp" alt="挚爱版" class="card-img">
+                <div class="card-body">
+                    <div class="card-title">赫护一生・挚爱版</div>
+                    <div class="card-desc">双人投保享 8 折优惠，夫妻/情侣共享 600 万保额。</div>
+                    <div class="card-footer">
+                        <span class="card-price">¥529 起</span>
+                        <a href="#" class="card-link">查看详情 ></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://test.fukit.cn/autoupload/f/k7AhIRkkxuRrgNLY-f3MptiO_OyvX7mIgxFBfDMDErs/20251230/20G7/1200X900/%E5%9B%BE%E7%89%87/%E5%A5%B3%E6%80%A7.jpg/webp" alt="赫康轻量" class="card-img">
+                <div class="card-body">
+                    <div class="card-title">赫康轻量医疗险</div>
+                    <div class="card-desc">针对年轻奋斗群体，覆盖常见住院及门诊，保费无压力。</div>
+                    <div class="card-footer">
+                        <span class="card-price">¥168 起</span>
+                        <a href="#" class="card-link">查看详情 ></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://test.fukit.cn/autoupload/f/k7AhIRkkxuRrgNLY-f3MptiO_OyvX7mIgxFBfDMDErs/20251230/b4MR/1200X900/%E5%9B%BE%E7%89%87/%E8%80%81%E5%A5%B6%E5%A5%B6.jpg/webp" alt="长辈险" class="card-img">
+                <div class="card-body">
+                    <div class="card-title">赫护长辈医疗险</div>
+                    <div class="card-desc">60-75 岁可投，免健康告知项目多，覆盖老年常见病。</div>
+                    <div class="card-footer">
+                        <span class="card-price">¥699 起</span>
+                        <a href="#" class="card-link">查看详情 ></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                 <img src="https://test.fukit.cn/autoupload/f/k7AhIRkkxuRrgNLY-f3MptiO_OyvX7mIgxFBfDMDErs/20251230/baHl/1200X900/%E5%9B%BE%E7%89%87/%E6%97%85%E6%B8%B8.jpg/webp" alt="全家共享" class="card-img">
+                <div class="card-body">
+                    <div class="card-title">赫家保・全家共享</div>
+                    <div class="card-desc">3-5 人家庭投保，一张保单共享 800 万保额，管理更省心。</div>
+                    <div class="card-footer">
+                        <span class="card-price">¥1299 起</span>
+                        <a href="#" class="card-link">查看详情 ></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://test.fukit.cn/autoupload/f/k7AhIRkkxuRrgNLY-f3MptiO_OyvX7mIgxFBfDMDErs/20251230/XO79/1200X900/%E5%9B%BE%E7%89%87/%E5%84%BF%E7%AB%A5.jpg/webp" alt="赫童保" class="card-img">
+                <div class="card-body">
+                    <div class="card-title">赫童保・少儿医疗险</div>
+                    <div class="card-desc">0 免赔，覆盖儿童常见疾病及疫苗接种不良反应。</div>
+                    <div class="card-footer">
+                        <span class="card-price">¥299 起</span>
+                        <a href="#" class="card-link">查看详情 ></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://test.fukit.cn/autoupload/f/k7AhIRkkxuRrgNLY-f3MptiO_OyvX7mIgxFBfDMDErs/20251230/D2Kl/1200X900/5ab920da9aaa5d7f8c2dd1ffa328fc63.jpg/webp" alt="意外险" class="card-img">
+                <div class="card-body">
+                    <div class="card-title">赫行保・百万意外险</div>
+                    <div class="card-desc">旗舰版，覆盖交通意外、日常意外，保额高达 200 万。</div>
+                    <div class="card-footer">
+                        <span class="card-price">¥58.8 起</span>
+                        <a href="#" class="card-link">查看详情 ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="services-section">
+        <div class="section-container">
+            <h2 class="section-title" style="text-align: center;">赫尔思服务承诺</h2>
+            <div class="services-grid">
+                <div>
+                    <div class="service-icon">✚</div>
+                    <div class="service-title">24小时家庭医生</div>
+                    <div class="service-desc">免费提供健康咨询、就医指导，随时在线。</div>
+                </div>
+                <div>
+                    <div class="service-icon">⚡</div>
+                    <div class="service-title">3步极速理赔</div>
+                    <div class="service-desc">拍照上传、智能审核、秒级到账。</div>
+                </div>
+                <div>
+                    <div class="service-icon">❤</div>
+                    <div class="service-title">门诊小病也能赔</div>
+                    <div class="service-desc">打破传统限制，感冒发烧看门诊也能报销。</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2025 ECNU Statistics School Data Visualization</p>
-    </footer>
-</div>
-
-<script>
-    // Data Source extracted from the target website
-    const facultyData = [
-        { name: "毕俊娜", title: "教授", interests: ["保险精算", "金融数学", "随机优化"], email: "jnbi@sfs.ecnu.edu.cn", office: "理科大楼A1312b" },
-        { name: "陈律", title: "副教授", interests: ["保险精算", "随机控制", "金融计量"], email: "lchen@fem.ecnu.edu.cn", office: "理科大楼A1517" },
-        { name: "范堃", title: "教授", interests: ["保险精算", "数理金融"], email: "kfan@finance.ecnu.edu.cn", office: "理科大楼A1706b" },
-        { name: "贺思辉", title: "副教授", interests: ["金融风险管理", "精算风险理论", "统计综合评价", "利息理论"], email: "shhe@stat.ecnu.edu.cn", office: "理科大楼A1712a" },
-        { name: "李丹萍", title: "教授", interests: ["保险精算", "金融工程", "金融数学", "应用统计"], email: "dpli@fem.ecnu.edu.cn", office: "理科大楼A1717" },
-        { name: "钱林义", title: "教授", interests: ["保险精算", "金融数学"], email: "lyqian@stat.ecnu.edu.cn", office: "理科大楼A1708b" },
-        { name: "仇春涓", title: "教授", interests: ["健康保险", "保险精算"], email: "cjqiu@stat.ecnu.edu.cn", office: "理科大楼A1706c" },
-        { name: "汪荣明", title: "教授", interests: ["保险精算", "风险管理", "数理金融"], email: "rmwang@stat.ecnu.edu.cn", office: "理科大楼A1505" },
-        { name: "危佳钦", title: "教授", interests: ["精算学", "金融数学"], email: "jqwei@stat.ecnu.edu.cn", office: "理科大楼A1512" },
-        { name: "叶明华", title: "教授", interests: ["农业保险", "健康风险管理", "保险与资本市场对接"], email: "mhye@stat.ecnu.edu.cn", office: "理科大楼A1713" },
-        { name: "占梦雅", title: "副教授", interests: ["资本管理", "保险精算"], email: "myzhan@stat.ecnu.edu.cn", office: "理科大楼A1711" },
-        { name: "张楠", title: "副教授", interests: ["保险精算", "风险管理", "金融数学"], email: "nzhang@sfs.ecnu.edu.cn", office: "理科大楼A1709" }
-    ];
-
-    const grid = document.getElementById('grid');
-    const searchInput = document.getElementById('searchInput');
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const emptyState = document.getElementById('emptyState');
-
-    // Helper: Generate color from name string to keep it consistent but varied
-    function stringToColor(str) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-            hash = str.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
-        return '#' + "00000".substring(0, 6 - c.length) + c;
-    }
-
-    // Helper: Create HTML for a card
-    function createCard(teacher) {
-        const initial = teacher.name.charAt(0);
-        const color = stringToColor(teacher.name + "ecnu"); 
-        // Using a fixed set of nice muted colors if random is too chaotic, but let's try dynamic first
-        // Let's override with a specific palette for better UI
-        const colors = ['#E57373', '#F06292', '#BA68C8', '#9575CD', '#7986CB', '#64B5F6', '#4FC3F7', '#4DB6AC', '#81C784', '#FFD54F', '#FF8A65'];
-        const safeColor = colors[teacher.name.length % colors.length];
-
-        const titleClass = teacher.title === '教授' ? 'badge-prof' : 'badge-assoc';
-        
-        const tagsHtml = teacher.interests.map(interest => `<span class="tag">${interest}</span>`).join('');
-
-        return `
-            <div class="card">
-                <div class="card-header">
-                    <div class="avatar" style="background-color: ${safeColor}">${initial}</div>
-                    <div class="info">
-                        <h3>${teacher.name}</h3>
-                        <span class="badge ${titleClass}">${teacher.title}</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="detail-row">
-                        <span class="detail-icon">📧</span>
-                        <a href="mailto:${teacher.email}" style="color:var(--primary-color); text-decoration:none;">${teacher.email}</a>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-icon">🏢</span>
-                        <span>${teacher.office}</span>
-                    </div>
-                    <div class="tags">
-                        ${tagsHtml}
-                    </div>
-                </div>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>保险产品</h4>
+                <ul>
+                    <li><a href="#">医疗保险</a></li>
+                    <li><a href="#">重疾保险</a></li>
+                    <li><a href="#">意外保险</a></li>
+                </ul>
             </div>
-        `;
-    }
+            <div class="footer-col">
+                <h4>理赔服务</h4>
+                <ul>
+                    <li><a href="#">在线理赔</a></li>
+                    <li><a href="#">理赔指引</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">公司简介</a></li>
+                    <li><a href="#">最新动态</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系方式</h4>
+                <ul>
+                    <li style="font-size: 18px; font-weight: bold; color: var(--primary-color);">400-888-9999</li>
+                    <li>上海总部</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 赫尔思健康险（学生模拟作业非商用，如侵权立删） All Rights Reserved.</p>
+        </div>
+    </footer>
 
-    // Render Function
-    function render(data) {
-        // Clear grid but keep empty state div
-        const cards = grid.querySelectorAll('.card');
-        cards.forEach(card => card.remove());
-
-        if (data.length === 0) {
-            emptyState.style.display = 'block';
-        } else {
-            emptyState.style.display = 'none';
-            data.forEach(teacher => {
-                grid.insertAdjacentHTML('beforeend', createCard(teacher));
-            });
-        }
-    }
-
-    // Filter & Search Logic
-    let currentFilter = 'all';
-    let currentSearch = '';
-
-    function filterData() {
-        const filtered = facultyData.filter(item => {
-            // 1. Check Title Filter
-            const matchesFilter = currentFilter === 'all' || item.title === currentFilter;
+    <div class="modal-overlay" id="insuranceModal">
+        <div class="modal-container">
+            <div class="close-modal" onclick="closeModal()">×</div>
             
-            // 2. Check Search Text
-            const searchLower = currentSearch.toLowerCase();
-            const matchesSearch = item.name.includes(searchLower) || 
-                                  item.interests.some(i => i.toLowerCase().includes(searchLower)) ||
-                                  item.email.includes(searchLower);
+            <div class="modal-header">
+                <div class="modal-title">投保：赫护一生医疗险</div>
+                <div class="modal-subtitle">请确认产品信息并填写投保人资料</div>
+            </div>
 
-            return matchesFilter && matchesSearch;
+            <form id="insuranceForm" onsubmit="handleSumit(event)">
+                <div class="form-group">
+                    <label class="form-label">投保人姓名</label>
+                    <input type="text" class="form-input" placeholder="请输入真实姓名" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">身份证号码</label>
+                    <input type="text" class="form-input" placeholder="请输入18位身份证号" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">手机号码</label>
+                    <input type="tel" class="form-input" placeholder="请输入联系电话" required>
+                </div>
+
+                <div class="agreement-box">
+                    <input type="checkbox" required id="agree"> 
+                    <label for="agree">
+                        我已阅读并同意
+                        <a href="https://test.fukit.cn/autoupload/f/k7AhIRkkxuRrgNLY-f3MptiO_OyvX7mIgxFBfDMDErs/20251230/tlr6/%E4%BA%A7_%E5%93%81_%E8%AF%B4_%E6%98%8E%281%29.docx" class="link-highlight" target="_blank">《产品说明》</a>、
+                        <span class="link-highlight">《投保须知》</span>及
+                        <span class="link-highlight">《免责条款》</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">立即支付 ¥399</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        const modal = document.getElementById('insuranceModal');
+
+        function openModal() {
+            modal.style.display = 'flex';
+            // Force reflow for transition
+            setTimeout(() => {
+                modal.classList.add('modal-active');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.remove('modal-active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        // Close when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
         });
-        render(filtered);
-    }
 
-    // Event Listeners
-    searchInput.addEventListener('input', (e) => {
-        currentSearch = e.target.value.trim();
-        filterData();
-    });
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // Add to clicked
-            btn.classList.add('active');
-            // Update state
-            currentFilter = btn.dataset.filter;
-            filterData();
-        });
-    });
-
-    // Initial Render
-    render(facultyData);
-
-</script>
-
+        // Form Submit
+        function handleSumit(e) {
+            e.preventDefault();
+            alert('模拟支付成功！感谢您选择赫尔思健康险。');
+            closeModal();
+        }
+    </script>
 </body>
 </html>
